@@ -1,5 +1,45 @@
 def valid_isbn(isbn)
-	isbn.gsub!(" ", "") || isbn.gsub!("-", "") #ignores spaces or dashes and !updates permanently
-	isbn.length == 10 #auto if/else statement
+	isbn = removing_spaces(isbn)
+	isbn = removing_dashes(isbn)
+		if valid_isbn_length?(isbn) && valid_isbn_ten_check_sum?(isbn)
+			true
+		else
+			false
+		end 
+	
+	#isbn.split(//) # makes isbn array of characters because you cant do math on a string or a single integer of multiple digits
+	#isbn.map!(&:to_i) #takes isbn and the map! turns the array into integers
+	
 end
 
+def valid_isbn_length?(isbn)
+	isbn.length == 10
+end
+
+def valid_isbn_ten_check_sum?(isbn)
+	ten_digit_array = isbn.chars.map!(&:to_i) #instead of split and map
+	sum = 0
+	ten_digit_array.each_with_index do |value, index|
+		break if index == 9
+		sum += (index + 1) * value
+	end
+	check_sum = sum % 11
+		if check_sum == 10
+			check_sum = "x"
+		end
+	check_sum_string = check_sum.to_s
+	if check_sum_string == isbn[-1]
+		true
+	else
+		false
+	end
+
+end
+
+def removing_spaces(isbn)
+	isbn.gsub(" ", "")
+end
+
+def removing_dashes(isbn)
+	isbn.gsub("-", "")
+end
