@@ -25,10 +25,10 @@ def valid_isbn_ten_check_sum?(isbn)
 	end
 	check_sum = sum % 11
 		if check_sum == 10
-			check_sum = "x"
+			check_sum = "X"
 		end
 	check_sum_string = check_sum.to_s
-	if check_sum_string == isbn[-1]
+	if check_sum_string == isbn[-1].upcase
 		true
 	else
 		false
