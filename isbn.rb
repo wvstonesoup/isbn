@@ -6,10 +6,6 @@ def valid_isbn(isbn)
 		else
 			false
 		end 
-	
-	#isbn.split(//) # makes isbn array of characters because you cant do math on a string or a single integer of multiple digits
-	#isbn.map!(&:to_i) #takes isbn and the map! turns the array into integers
-	
 end
 
 def valid_isbn_length?(isbn)
