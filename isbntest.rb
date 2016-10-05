@@ -27,11 +27,11 @@ class TestIsbn <Minitest::Test
 		assert_equal(true, valid_isbn(isbn))
 	end
 
-	# def test_invalid_ten_digit_return_false
-	# 	isbn = "04-71@-58 697"
-	# 	assert_equal(false, valid_isbn(isbn))
-	# end
-#this returned a true....why?
+	def test_invalid_ten_digit_return_false
+		isbn = "04-71@-58 697"
+		assert_equal(false, valid_isbn(isbn))
+	end
+#this returned a true....why? AHA! I DIDN'T SAY HAD TO BE NUMERALS UNTIL LATER. NOW IT RETURNS FALSE AND PASSES. 
 	def test_invalid_ten_digit_isbn_return_false
 		isbn = "0471958699"
 		assert_equal(false, valid_isbn(isbn))
